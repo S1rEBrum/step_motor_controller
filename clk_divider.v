@@ -15,7 +15,7 @@ always @(posedge clk or negedge rst)
 		if (~rst) begin 
 				count <= 21'b0;
 				clk_out = 0;
-		end else if (count >= count_to) begin 
+		end else if (count >= count_to - 1'b1) begin 
 			count <= 21'b0;
 			clk_out = (~clk_out); // change the clock
 		end else begin 

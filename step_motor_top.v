@@ -27,7 +27,7 @@ module step_motor_top(clk, resetb, direction, speed_sel, on, quarter, step_size,
 	
 	
 	//posedge detector for velocity changes 
-	posedge_detector posedge_detector_inst(.clk(clk), .rst(resetb), .rpm(speed_sel), .out(speed_enable));
+	negedge_detector negedge_detector_inst1(.clk(clk), .rst(resetb), .sig(speed_sel), .out(speed_enable));
 	
 	//speed selector
 	speed_selector speed_selector_inst(.clk(clk), .rst(resetb), .en(speed_enable), .speed_out(speed));
@@ -39,7 +39,7 @@ module step_motor_top(clk, resetb, direction, speed_sel, on, quarter, step_size,
 	clk_divider clk_divider_inst(.clk(clk), .rst(resetb), .clk_out(clk_for_motor), .count_to(count_to));
 	
 	// negedge detector for quarter 
-	negedge_detector negedge_detector_inst(.clk(clk_for_motor), .rst(resetb), .sig(quarter), .out(en_edge));
+	negedge_detector negedge_detector_inst2(.clk(clk_for_motor), .rst(resetb), .sig(quarter), .out(en_edge));
 	
 	//quarter counter
 	quarter_count quarter_count_inst(.clk(clk_for_motor), .rst(resetb), .step(step_size), .en_edge(en_edge), .quarter_out(quarter_out));

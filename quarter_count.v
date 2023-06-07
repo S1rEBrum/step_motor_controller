@@ -11,8 +11,8 @@ module quarter_count(
 	parameter FS_COUNT = 8'd100;
 	
 	// PARAMETERS FOR TEST
-	//parameter HS_COUNT = 8'd4;
-	//parameter FS_COUNT = 8'd8;
+//	parameter HS_COUNT = 8'd4;
+//	parameter FS_COUNT = 8'd8;
 	
 	// inner regs 
 	reg [7:0] count;
